@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\Role;
+use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -23,9 +24,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  * @property-read string $phone
  * @property-read string $role
  * @property-read string $two_factor_confirmed_at
- * @property-read string $created_at
- * @property-read string $updated_at
- * @property-read string $deleted_at
+ * @property-read CarbonInterface $created_at
+ * @property-read CarbonInterface $updated_at
+ * @property-read CarbonInterface|null $deleted_at
  */
 final class User extends Authenticatable
 {
