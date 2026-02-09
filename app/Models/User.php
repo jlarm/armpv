@@ -15,7 +15,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 /**
  * @property-read int $id
  * @property-read string $uuid
- * @property-read int $dealership_id
  * @property-read string $name
  * @property-read string $email
  * @property-read string $email_verified_at
@@ -55,7 +54,6 @@ final class User extends Authenticatable
         return [
             'id' => 'integer',
             'uuid' => 'string',
-            'dealership_id' => 'integer',
             'name' => 'string',
             'email' => 'string',
             'email_verified_at' => 'datetime',
