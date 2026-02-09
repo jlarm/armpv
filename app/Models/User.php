@@ -4,27 +4,33 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\Role;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
+/**
+ * @property-read int $id
+ * @property-read string $uuid
+ * @property-read int $dealership_id
+ * @property-read string $name
+ * @property-read string $email
+ * @property-read string $email_verified_at
+ * @property-read string $password
+ * @property-read int $current_store_id
+ * @property-read string $phone
+ * @property-read string $role
+ * @property-read string $two_factor_confirmed_at
+ * @property-read string $created_at
+ * @property-read string $updated_at
+ * @property-read string $deleted_at
+ */
 final class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,9 +52,20 @@ final class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'id' => 'integer',
+            'uuid' => 'string',
+            'dealership_id' => 'integer',
+            'name' => 'string',
+            'email' => 'string',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'current_store_id' => 'integer',
+            'phone' => 'string',
+            'role' => Role::class,
             'two_factor_confirmed_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
         ];
     }
 }
