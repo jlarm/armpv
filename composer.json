@@ -19,6 +19,7 @@
     "require-dev": {
         "driftingly/rector-laravel": "^2.1",
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^3.0",
         "laravel/boost": "^2.1",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
@@ -61,11 +62,15 @@
         ],
         "lint": [
             "rector",
-            "pint --parallel"
+            "pint --parallel",
+            "npm run lint"
         ],
         "test:lint": [
-            "pint --parallel --test"
+            "pint --parallel --test",
+            "rector --dry-run",
+            "bun run test:lint"
         ],
+        "test:types": "phpstan",
         "test": [
             "@php artisan config:clear --ansi",
             "@test:lint",
