@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\Dealership;
 use App\Models\Store;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
