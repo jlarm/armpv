@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\Store;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignIdFor(Store::class)->nullable();
+            $table->foreignId('current_store_id')->nullable()->constrained('stores');
             $table->string('phone')->unique()->nullable();
             $table->string('role');
             $table->rememberToken();

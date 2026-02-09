@@ -8,6 +8,7 @@ use App\Enums\Role;
 use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -43,6 +44,11 @@ final class User extends Authenticatable
         'two_factor_recovery_codes',
         'remember_token',
     ];
+
+    public function stores(): BelongsToMany
+    {
+        return $this->belongsToMany(Store::class);
+    }
 
     /**
      * Get the attributes that should be cast.
